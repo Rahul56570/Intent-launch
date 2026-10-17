@@ -7,16 +7,9 @@
 </head>
 <body>
 <script>
-const p  = new URLSearchParams(location.search);
-const pa = p.get("pa") || "";
-const pn = p.get("pn") || "";
-const am = p.get("am") || "";
-const tn = p.get("tn") || "";
-const qs = new URLSearchParams({pa, pn, am, cu:"INR", tn}).toString();
-
-// intent:// opens Android UPI app chooser directly — no Play Store fallback
-const url = "intent://pay?" + qs + "#Intent;scheme=upi;end";
-location.replace(url);
+// Gateway ka original URL seedha use karo — no rebuilding
+const url = new URLSearchParams(location.search).get("url");
+if (url) location.replace(url);
 </script>
 </body>
 </html>
